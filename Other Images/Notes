@@ -1,0 +1,7 @@
+The GTZAN dataset was more suitable of us since it wasn’t that large. It also contained a finite set of genres (10) and 100 audio files for each genre. It also included the generated spectrograms for each audio file and it turned out to be a great starting point.
+
+NMA already provided a model, but we wanted to improve it, including the things we learnt during Neuromatch Academy and by working independently.
+
+To do so we tried different approaches: First we added 2 more conv layers for a total of 7 CONV LAYERS WITH BATCHNORM AND RELU. We then changed our optimizer from ADAM to SGD since it yielded better results. After that, we changed the nn.Linear implementation for a LazyLinear, which makes a prediction of the input feaures. 
+
+We added different transformations such a Gaussian Blur, a normalization Layer and Random rotations and Horizontal flips to perform image transformation. We also used audio data augmentation techniques such as time shift and noise addition. However, we figured out that what hindered our performance was in fact the original spectrograms. Working with colored spectrograms didn’t allow us to have a better performance. Also, the original Notebook used matplot lib to save the images and that took a lot of time so we used pillow instead gich gave a much better performance. So we opted to generate and use grayscale spectrograms intead and save them in our collab notebook using pillow.
